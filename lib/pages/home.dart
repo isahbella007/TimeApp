@@ -11,8 +11,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final Future<String?> theTime = getTheTime();
   final Future<String?> theLocation = getTheLocation();
-  final String theDay = urlImage();  
+  late String theDay; 
 
+  @override
+  void initState(){
+    theDay = urlImage();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
