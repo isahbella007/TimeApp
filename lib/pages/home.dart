@@ -16,6 +16,7 @@ class _HomeState extends State<Home> {
   @override
   void initState(){
     theDay = urlImage();
+    super.initState();
   }
   
   @override
