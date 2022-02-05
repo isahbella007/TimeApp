@@ -10,21 +10,16 @@ Future<String?> getTheTime() async {
 }
 
 // Function to get day. Wheter morning or night
-Future<bool?> getTheDay() async {
-  final bool? theDay = await instance.getTheUserDay();
-  print("Is day:  $theDay");
-  
-  return theDay;
-}
+// Future<bool?> getTheDay() async {
+//   final bool? theDay = await instance.getTheUserDay();
+//   print("Is day:  $theDay");
+
+//   return theDay;
+// }
 
 //Get the day then return a string that is the url to the image
 Future<String> urlImage() async {
-  bool? result = await getTheDay();
-  // getTheDay().then((theday) {
-  //   print(theday);
-  //   result = theday;
-  //   print("Value of result inside .then.  $result");
-  // });
+  bool? result = await instance.getTheUserDay();
   print("Value of result outside .then. $result");
   if (result == true) {
     print("url image result comes to true");
@@ -37,8 +32,6 @@ Future<String> urlImage() async {
     return 'assets/random.jpg';
   }
 }
-// I think the issue rn is how to make line 23 run before everything under
-// Line 28
 
 // Funtion to get the User Location
 Future<String?> getTheLocation() async {
