@@ -16,17 +16,17 @@ class WorldTime {
       final userTimeResponse =
           await world_time_api.get(Uri.parse("http://worldtimeapi.org/api/ip"));
       Map data = jsonDecode(userTimeResponse.body);
-      print(data['datetime']);
+      // print(data['datetime']);
 
       // Get the datetime from the api, and the offset (GMT)
       String dateTime = data['datetime'];
       String offset = data['utc_offset'].substring(0, 3);
-      print(offset);
+      // print(offset);
 
       // Parse the datetime and add the offset
       DateTime now = DateTime.parse(dateTime);
       now = now.add(Duration(hours: int.parse(offset)));
-      print(now.hour);
+      // print(now.hour);
 
       // Get the Time.
       time = DateFormat.jm().format(now);
@@ -54,10 +54,12 @@ class WorldTime {
       // Get the day. Whether morning or night
       if (now.hour > 6 && now.hour < 18) {
         isDay = true;
+        print("getTheUserDay func -- reaches here: The day is $isDay");
       } else {
         isDay = false;
+        print("getTheUserDay func -- reaches here: The day is $isDay");
       }
-      print("Bool for is it day is currently $isDay");
+      
     } catch (e) {
       print('caught error: $e');
     }
@@ -79,5 +81,4 @@ class WorldTime {
     }
     return location;
   }
-
 }

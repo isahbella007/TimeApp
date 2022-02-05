@@ -11,7 +11,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final Future<String?> theTime = getTheTime();
   final Future<String?> theLocation = getTheLocation();
-  final String theDay = urlImage();  
+
+  late Future<String> theDay; 
+   @override
+    void initState(){
+    theDay = urlImage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class _HomeState extends State<Home> {
               child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage(theDay),
+              image: AssetImage(theDay.toString()),
               fit: BoxFit.cover,
             )),
             child: ListView(
